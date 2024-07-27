@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 
 export const urls = sqliteTable("urls", {
   id: text("id")
-    .$defaultFn(() => nanoid())
+    .$defaultFn(() => nanoid(7))
     .primaryKey(),
   destinationUrl: text("destination_url", { length: 2048 }).notNull(),
 });
