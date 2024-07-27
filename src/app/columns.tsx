@@ -1,11 +1,11 @@
 "use client";
 
+import { DeleteShortenedUrl } from "@/components/delete-shortened-url";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -51,7 +51,7 @@ export const columns: ColumnDef<URL>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <p className="text-red-700">Delete</p>
+              <DeleteShortenedUrl url={url} />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
