@@ -1,17 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { db } from "@/lib/db";
-import { urls } from "@/lib/schema";
+import { shrinkUrl } from "@/lib/actions";
 
 export async function ShortenerForm() {
-  async function shrinkUrl(formData: FormData) {
-    "use server";
-
-    await db.insert(urls).values({
-      destinationUrl: formData.get("url") as string,
-    });
-  }
-
   return (
     <form action={shrinkUrl}>
       <div className="flex gap-1.5">
