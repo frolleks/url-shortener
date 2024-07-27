@@ -1,11 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { db } from "@/lib/db";
+import { urls } from "@/lib/schema";
 
 export default function Home() {
   async function shrinkUrl(formData: FormData) {
     "use server";
 
-    console.log(formData.get("url"));
+    if (
+      !formData
+        .get("url")
+        ?.toString()
+        .startsWith("http:" || "https:")
+    ) {
+      return "URL must start with https: or http:";
+    }
+
+    await db.insert(urls).values({
+      destinationUrl: formData.get("url") as string,
+    });
   }
 
   return (
